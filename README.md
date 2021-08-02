@@ -1,16 +1,36 @@
-# number_facts
+# Facts about Numbers
 
-A new Flutter project.
+A simple flutter-client for [numbersapi](http://numbersapi.com/).
 
-## Getting Started
+![App screen](assets/page/date_fact_640.png)
 
-This project is a starting point for a Flutter application.
+## Key features
 
-A few resources to get you started if this is your first Flutter project:
+* Shows a fact about the specified/random date
+* Shows a trivia fact about the specified/random number
+* Shows a math fact about the specified/random number
+* Translates the current fact to one of the languages: 
+    - Deutsch  🇩🇪
+    - Français 🇫🇷
+    - Español  🇪🇸
+    - Русский 🇷🇺
+    - Українська 🇺🇦
+* Shows a fact about the current date on start
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## How to build
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Follow [this](https://flutter.dev/docs/get-started/install) tutorial on how to install and set up flutter for mobile development. 
+2. Clone the repository: git clone https://github.com/xvadim/number_facts.git
+3. Build and run:
+
+`flutter run -d Android`
+
+or
+
+`flutter run -d iPhone`
+
+or
+
+`flutter run -d chrome`
+
+
