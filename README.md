@@ -33,4 +33,6 @@ or
 
 `flutter run -d chrome`
 
+4. Or just install from the [Google Play page](https://play.google.com/store/apps/details?id=org.xbasoft.number_facts)
+
 
