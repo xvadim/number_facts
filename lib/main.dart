@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
@@ -7,6 +8,10 @@ import 'services/service_locator.dart';
 import 'views/number_facts_screen.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(
+      <DeviceOrientation>[DeviceOrientation.portraitUp]);
+
   await Settings.init();
 
   setupLocator();
