@@ -11,6 +11,6 @@ class NumberInfo {
 abstract class NumbersApi {
   Future<NumberInfo?> loadTriviaFact(String? number);
   Future<NumberInfo?> loadMathFact(String? number);
-  Future<NumberInfo?> loadDateFact(String? month, String? day);
+  Future<NumberInfo?> loadDateFact(String? date);
   void dispose();
 }

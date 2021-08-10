@@ -16,11 +16,11 @@ class _NumberFactsScreenState extends State<NumberFactsScreen> {
   int _currentPageIndex = 0;
 
   final List<Widget> _views = <Widget>[
-    const NumberFactView(mode: NumberFactViewMode.dates),
-    const NumberFactView(mode: NumberFactViewMode.trivia),
-    const NumberFactView(mode: NumberFactViewMode.math),
+    NumberFactView.withMode(mode: NumberFactViewMode.dates),
+    NumberFactView.withMode(mode: NumberFactViewMode.trivia),
+    NumberFactView.withMode(mode: NumberFactViewMode.math),
     const SettingsView(),
-    const AboutView()
+    const AboutView(),
   ];
 
   @override
@@ -28,10 +28,7 @@ class _NumberFactsScreenState extends State<NumberFactsScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(title: const Text('Facts about numbers')),
-        body: IndexedStack(
-          index: _currentPageIndex,
-          children: _views,
-        ),
+        body: IndexedStack(index: _currentPageIndex, children: _views),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: _currentPageIndex,

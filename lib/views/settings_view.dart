@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
+import '../constants.dart';
 import '../services/langs_service.dart';
 import '../services/service_locator.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({Key? key}) : super(key: key);
-
-  static const String keyStartMode = 'startMode';
 
   @override
   Widget build(BuildContext context) {

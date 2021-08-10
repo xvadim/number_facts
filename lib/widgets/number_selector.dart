@@ -8,7 +8,6 @@ import '../services/service_locator.dart';
 typedef OnNumberSelected = Function(
   BuildContext context, {
   String? number,
-  String? month,
   String? lang,
 });
 
@@ -69,7 +68,7 @@ class _NumberSelectorState extends State<NumberSelector> {
               keyboardType:
                   const TextInputType.numberWithOptions(decimal: true),
               onSubmitted: (String number) => widget.onNumberSelected(context,
-                  number: number, month: _month, lang: _lang),
+                  number: _normalizedNumber(number), lang: _lang),
             ),
           ),
           //get a number fact
@@ -78,10 +77,9 @@ class _NumberSelectorState extends State<NumberSelector> {
             child: IconButton(
               onPressed: () => widget.onNumberSelected(
                 context,
-                number: _textController.text.isNotEmpty
+                number: _normalizedNumber(_textController.text.isNotEmpty
                     ? _textController.text
-                    : null,
-                month: _month,
+                    : null),
                 lang: _lang,
               ),
               icon: const FaIcon(FontAwesomeIcons.fileDownload),
@@ -98,6 +96,14 @@ class _NumberSelectorState extends State<NumberSelector> {
         ],
       ),
     );
+  }
+
+  String? _normalizedNumber(String? number) {
+    if (number == null) {
+      return null;
+    }
+
+    return _month == null ? number : '$_month/$number';
   }
 
   final TextEditingController _textController = TextEditingController();
@@ -127,9 +133,7 @@ class __LangSelectorState extends State<_LangSelector> {
             widget.onLangChanged(langsService.lang(_curLangIndex));
           });
         },
-        child: Text(
-          langsService.flag(_curLangIndex),
-        ));
+        child: Text(langsService.flag(_curLangIndex)));
   }
 
   int _curLangIndex = 0;
