@@ -28,6 +28,10 @@ class NumbersApiImpl extends NumbersApi {
   String _number(String? number) =>
       number != null && number.isNotEmpty ? number : 'random';
 
+
+  // Loads a fact about a given number
+  // [kind]: 'date', 'trivia', 'math'
+  // [number]: a number or null for random fact
   Future<NumberInfo?> _loadFact(String kind, String? number) async {
     final String url = '${_number(number)}/$kind$_suffix';
     NumberInfo? res;

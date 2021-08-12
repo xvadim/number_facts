@@ -4,12 +4,15 @@ import '../services/numbers_api.dart';
 import '../services/service_locator.dart';
 import '../services/translator_api.dart';
 
+/// Base class for view models
+/// Derived classes must to override the [loadNumberFact] method
 abstract class FactViewModel extends ChangeNotifier {
 
   FactViewModel() {
     loadInitFact();
   }
 
+  /// Loads a fact for a given [number] and translate it to language [lang]
   Future<void> loadFact(String? number, String? lang) async {
 
     _curLang = lang;
@@ -27,6 +30,7 @@ abstract class FactViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Sets the second language to [lang] and translate the current fact to it.
   Future<void> changeLang(String? lang) async {
     if (_curLang == lang) {
       return;
