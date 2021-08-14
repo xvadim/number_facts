@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../services/numbers_api.dart';
-import '../services/service_locator.dart';
-import '../services/translator_api.dart';
+import '../models/number_fact_model.dart';
 
 /// Base class for view models
 /// Derived classes must to override the [loadNumberFact] method
@@ -15,63 +13,37 @@ abstract class FactViewModel extends ChangeNotifier {
   /// Loads a fact for a given [number] and translate it to language [lang]
   Future<void> loadFact(String? number, String? lang) async {
 
-    _curLang = lang;
-    _numberFacts.clear();
     _isLoading = true;
-
     notifyListeners();
 
-    await loadNumberFact(number);
-
-    await _translateFact();
+    await loadNumberFact(number, lang);
 
     _isLoading = false;
-
     notifyListeners();
   }
 
   /// Sets the second language to [lang] and translate the current fact to it.
   Future<void> changeLang(String? lang) async {
-    if (_curLang == lang) {
-      return;
-    }
-    _curLang = lang;
-
-    if (_numberFacts[_curLang] != null) {
-      notifyListeners();
-      return;
-    }
     _isLoading = true;
-
     notifyListeners();
 
-    await _translateFact();
+    await factModel.changeLang(lang);
 
     _isLoading = false;
     notifyListeners();
   }
 
-  String get numberFact => _numberFacts[_curLang] ?? '';
   bool get isLoading => _isLoading;
 
-  String? _curLang;
-  final Map<String?, String?> _numberFacts = <String?, String?>{};
+  String get numberFact => factModel.numberFact;
+
   bool _isLoading = false;
 
   @protected
-  Future<void> loadNumberFact(String? number);
+  final NumberFactModel factModel = NumberFactModel();
 
   @protected
-  void setBaseFact(NumberInfo? info) {
-    _numberFacts[null] = info?.text ?? 'Not found';
-  }
-
-  Future<void> _translateFact() async {
-    if (_curLang != null) {
-      final TranslatorApi translatorApi = serviceLocator<TranslatorApi>();
-      _numberFacts[_curLang] = await translatorApi.translate(_numberFacts[null]!, to: _curLang);
-    }
-  }
+  Future<void> loadNumberFact(String? number, String? lang);
 
   @protected
   Future<void> loadInitFact() async {
