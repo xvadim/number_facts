@@ -1,0 +1,20 @@
+name: Create Android adHoc build
+
+on:
+  # Run from 'Actions' menu manually 
+  workflow_dispatch:
+
+jobs:
+  create-adhoc-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.12'
+          channel: 'stable'
+      - run: flutter --version
