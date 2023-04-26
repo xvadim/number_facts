@@ -13,8 +13,20 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '12.x'
+
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.7.12'
           channel: 'stable'
-      - run: flutter --version
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Start adHoc build
+        run: flutter build apk --debug
+
+      # Upload a build to gihub storage
+      - uses: actions/upload-artifact@v1
+        with:
+          name: APK for QA
+          path: build/app/outputs/apk/dev/debug/app-dev-debug.apk
