@@ -35,4 +35,7 @@ or
 
 4. Or just install from the [Google Play page](https://play.google.com/store/apps/details?id=org.xbasoft.number_facts)
 
+## Articles ( 🇺🇦)
 
+1. [Кросплатформена розробка на Flutter. Частина I](http://xvadim.blogspot.com/2021/08/flutter-i.html)
+2. [Кросплатформена розробка на Flutter. Частина II](http://xvadim.blogspot.com/2021/08/flutter-ii.html)
