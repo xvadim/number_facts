@@ -11,10 +11,13 @@ import '../widgets/number_selector.dart';
 enum NumberFactViewMode { dates, trivia, math }
 
 abstract class NumberFactView extends StatelessWidget {
-  NumberFactView({Key? key}): super(key: key);
+  NumberFactView({Key? key}) : super(key: key);
 
-  factory NumberFactView.withMode({Key? key, required NumberFactViewMode mode}) {
-    switch(mode) {
+  factory NumberFactView.withMode({
+    Key? key,
+    required NumberFactViewMode mode,
+  }) {
+    switch (mode) {
       case NumberFactViewMode.dates:
         return _DateFactView(key: key);
       case NumberFactViewMode.trivia:
@@ -84,19 +87,19 @@ class _NumberViewConsumer<T extends FactViewModel> extends StatelessWidget {
       children: <Widget>[
         NumberSelector(
           withMonthPicker: withMonthPicker,
-          onNumberSelected: (
-            BuildContext context, {
-            String? number,
-            String? lang,
-          }) async =>
-              context.read<T>().loadFact(number, lang),
-          onLangChanged: (BuildContext context, {String? lang}) async =>
-              context.read<T>().changeLang(lang),
+          onNumberSelected:
+              (BuildContext context, {String? number, String? lang}) async =>
+                  context.read<T>().loadFact(number, lang),
+          onLangChanged:
+              (BuildContext context, {String? lang}) async =>
+                  context.read<T>().changeLang(lang),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child:
-              Text(description, style: Theme.of(context).textTheme.headline5),
+          child: Text(
+            description,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
         ),
         Expanded(
           child: Padding(
@@ -118,6 +121,6 @@ class _FactView<T extends FactViewModel> extends StatelessWidget {
     final bool isLoading = context.select<T, bool>((model) => model.isLoading);
     return isLoading
         ? const CircularProgressIndicator()
-        : Text(fact, style: Theme.of(context).textTheme.headline6);
+        : Text(fact, style: Theme.of(context).textTheme.bodyMedium);
   }
 }
