@@ -27,14 +27,16 @@ class _NumberFactsScreenState extends State<NumberFactsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: const Text('Facts about numbers')),
+        appBar: AppBar(title: const Text('Facts about number')),
         body: IndexedStack(index: _currentPageIndex, children: _views),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: _currentPageIndex,
-          onTap: (int index) => setState(() {
-            _currentPageIndex = index;
-          }),
+          onTap: (int index) {
+            setState(() {
+              _currentPageIndex = index;
+            });
+          },
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today_outlined),

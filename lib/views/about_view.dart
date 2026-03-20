@@ -8,10 +8,10 @@ class AboutView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: const <Widget>[
+        children: <Widget>[
           _UrlText(text: 'A client for http://numbersapi.com'),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0),
@@ -19,7 +19,9 @@ class AboutView extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 40.0),
-            child: _UrlText(text: 'More apps: https://xvadim.github.io/xbasoft'),
+            child: _UrlText(
+              text: 'More apps: https://xvadim.github.io/xbasoft',
+            ),
           ),
           Text('Hints:'),
           _Hint(text: 'Change language', leadingWidget: Text('🇬🇧')),
@@ -58,11 +60,8 @@ class _UrlText extends StatelessWidget {
 }
 
 class _Hint extends StatelessWidget {
-  const _Hint({
-    Key? key,
-    required this.text,
-    required this.leadingWidget,
-  }) : super(key: key);
+  const _Hint({Key? key, required this.text, required this.leadingWidget})
+    : super(key: key);
 
   final String text;
   final Widget leadingWidget;
@@ -73,7 +72,7 @@ class _Hint extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(padding: const EdgeInsets.all(8.0), child: leadingWidget),
-        Text(text)
+        Text(text),
       ],
     );
   }
