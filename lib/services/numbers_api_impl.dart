@@ -20,14 +20,13 @@ class NumbersApiImpl extends NumbersApi {
     _httpClient.close();
   }
 
-  static const String _baseUrl = 'http://numbersapi.com/';
+  static const String _baseUrl = 'http://number-trivia.com/';
   static const String _suffix = '?json&notfound=ceil';
 
   final Dio _httpClient = Dio(BaseOptions(baseUrl: _baseUrl));
 
   String _number(String? number) =>
       number != null && number.isNotEmpty ? number : 'random';
-
 
   // Loads a fact about a given number
   // [kind]: 'date', 'trivia', 'math'
