@@ -1,4 +1,4 @@
-# Facts about Numbers
+# Facts about Numbers 
 
 A simple flutter-client for [numbersapi](http://numbersapi.com/).
 
